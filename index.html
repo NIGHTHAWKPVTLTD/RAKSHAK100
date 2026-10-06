@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Site Under Maintenance</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --accent-1: #3b82f6; /* Blue */
+            --accent-2: #8b5cf6; /* Purple */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            perspective: 1000px;
+        }
+
+        /* Animated Background Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.6;
+            z-index: 1;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-1);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent-2);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Glassmorphism Card */
+        .container {
+            position: relative;
+            z-index: 10;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out forwards;
+            transform: translateY(20px);
+            opacity: 0;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes fadeIn {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* The 404 Text & Face */
+        .error-code {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            font-size: 7rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .error-code span {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* The Animated "0" Face */
+        .zero-face {
+            width: 100px;
+            height: 110px;
+            border: 10px solid transparent;
+            border-radius: 60px;
+            background: 
+                linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+                linear-gradient(135deg, var(--accent-1), var(--accent-2)) border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .face-features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.1s ease-out; /* Smooth JS tracking */
+        }
+
+        .face-bobbing {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: bob 3s infinite ease-in-out;
+        }
+
+        .eyes {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 8px;
+        }
+
+        .eye {
+            width: 12px;
+            height: 16px;
+            background: var(--text-main);
+            border-radius: 50%;
+            animation: blink 4s infinite;
+        }
+
+        .mouth {
+            width: 20px;
+            height: 6px;
+            background: var(--text-main);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        /* Expression change on hover */
+        .container:hover .mouth {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            transform: translateY(2px);
+        }
+
+        @keyframes blink {
+            0%, 46%, 50%, 100% { transform: scaleY(1); }
+            48% { transform: scaleY(0.1); }
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(2px); }
+            50% { transform: translateY(-4px); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Stylish Button */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -10px var(--accent-1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -10px var(--accent-2);
+        }
+
+        /* Status Indicator */
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
+        }
+
+        .pulse {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981; /* Green */
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-green 2s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .error-code { font-size: 5rem; gap: 10px; }
+            .zero-face { width: 75px; height: 85px; border-width: 8px; }
+            .eye { width: 10px; height: 14px; }
+            .mouth { width: 16px; height: 5px; }
+            h1 { font-size: 1.5rem; }
+            .container { padding: 3rem 1.5rem; }
+            p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Animated Background Elements -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <!-- Main Content -->
+    <div class="container" id="card">
+        <div class="status">
+            <div class="pulse"></div>
+            Deployment in progress
+        </div>
+        
+        <!-- Animated 404 Face -->
+        <div class="error-code">
+            <span>4</span>
+            <div class="zero-face">
+                <div class="face-features" id="face-features">
+                    <div class="face-bobbing">
+                        <div class="eyes">
+                            <div class="eye"></div>
+                            <div class="eye"></div>
+                        </div>
+                        <div class="mouth"></div>
+                    </div>
+                </div>
+            </div>
+            <span>4</span>
+        </div>
+
+        <h1>Pardon Our Dust</h1>
+        <p>The page you are looking for is temporarily unavailable while we deploy an exciting new update. We are upgrading our systems to serve you better. We'll be right back!</p>
+        
+        <button onclick="window.location.reload();" class="btn">Refresh Page</button>
+    </div>
+
+    <!-- Interactivity Script -->
+    <script>
+        const card = document.getElementById('card');
+        const faceFeatures = document.getElementById('face-features');
+        
+        document.addEventListener('mousemove', (e) => {
+            // 1. Tilt the whole card
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 50;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 50;
+            card.style.transform = `translateY(0) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+
+            // 2. Move the face features to follow the cursor
+            const eyeX = (e.pageX - window.innerWidth / 2) / 25;
+            const eyeY = (e.pageY - window.innerHeight / 2) / 25;
+            
+            // Limit how far the face can move so it stays inside the "0"
+            const clampedX = Math.max(-12, Math.min(12, eyeX));
+            const clampedY = Math.max(-10, Math.min(10, eyeY));
+            
+            faceFeatures.style.transform = `translate(${clampedX}px, ${clampedY}px)`;
+        });
+
+        // Reset transforms when mouse leaves the window
+        document.addEventListener('mouseleave', () => {
+            card.style.transform = `translateY(0) rotateY(0deg) rotateX(0deg)`;
+            card.style.transition = `transform 0.5s ease`;
+            
+            faceFeatures.style.transform = `translate(0px, 0px)`;
+            faceFeatures.style.transition = `transform 0.5s ease`;
+        });
+
+        // Remove transitions when mouse enters so it tracks smoothly
+        document.addEventListener('mouseenter', () => {
+            card.style.transition = `none`;
+            faceFeatures.style.transition = `none`;
+        });
+    </script>
+
+</body>
+</html>
